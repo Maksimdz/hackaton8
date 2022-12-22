@@ -2,36 +2,47 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private Rigidbody2D _rb;
-    private BoxCollider2D _collider;
-    private SpriteRenderer _body;
-    private Animator _anim;
-
-    [SerializeField] private LayerMask jumpableGround;
-
-    private float dirX = 0f;
-    [SerializeField] private float moveSpeed = 7f;
-    [SerializeField] private float jumpForce = 14f;
-    private static readonly int State = Animator.StringToHash("state");
-
     private enum MovementState { idle, running, jumping, falling }
+    
+    private static readonly LayerMask JumpableGround = 1 << 6;
+    private static readonly int State = Animator.StringToHash("state");
+    
+    [SerializeField] private Rigidbody2D _rb;
+    [SerializeField] private float _moveSpeed = 7f;
+    [SerializeField] private float _jumpForce = 14f;
 
-    private void Awake()
+    private HeroMediator _heroMediator;
+    private float _dirX = 0f;
+
+    public void Setup(HeroMediator heroMediator, HeroData heroData)
     {
-        _rb = GetComponent<Rigidbody2D>();
-        _collider = GetComponent<BoxCollider2D>();
-        _body = GetComponent<SpriteRenderer>();
-        _anim = GetComponent<Animator>();
+        _heroMediator = heroMediator;
+        _moveSpeed = heroData.moveSpeed;
+        _jumpForce = heroData.jumpForce;
+    }
+
+    public void Reset()
+    {
+        _rb.bodyType = RigidbodyType2D.Dynamic;
+        _heroMediator.Body.flipX = false;
+        _heroMediator.Anim.SetInteger(State, (int) MovementState.idle);
+        _dirX = 0f;
+    }
+
+    public void Freeze()
+    {
+        _rb.bodyType = RigidbodyType2D.Static;
+        _dirX = 0f;
     }
 
     private void Update()
     {
-        dirX = Input.GetAxisRaw("Horizontal");
-        _rb.velocity = new Vector2(dirX * moveSpeed, _rb.velocity.y);
+        _dirX = Input.GetAxisRaw("Horizontal");
+        _rb.velocity = new Vector2(_dirX * _moveSpeed, _rb.velocity.y);
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
-            _rb.velocity = new Vector2(_rb.velocity.x, jumpForce);
+            _rb.velocity = new Vector2(_rb.velocity.x, _jumpForce);
         }
 
         UpdateAnimationState();
@@ -41,15 +52,15 @@ public class PlayerMovement : MonoBehaviour
     {
         MovementState state;
 
-        if (dirX > 0f)
+        if (_dirX > 0f)
         {
             state = MovementState.running;
-            _body.flipX = false;
+            _heroMediator.Body.flipX = false;
         }
-        else if (dirX < 0f)
+        else if (_dirX < 0f)
         {
             state = MovementState.running;
-            _body.flipX = true;
+            _heroMediator.Body.flipX = true;
         }
         else
         {
@@ -65,11 +76,11 @@ public class PlayerMovement : MonoBehaviour
             state = MovementState.falling;
         }
 
-        _anim.SetInteger(State, (int)state);
+        _heroMediator.Anim.SetInteger(State, (int)state);
     }
 
     private bool IsGrounded()
     {
-        return Physics2D.BoxCast(_collider.bounds.center, _collider.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
+        return Physics2D.BoxCast(_heroMediator.Collider.bounds.center, _heroMediator.Collider.bounds.size, 0f, Vector2.down, .1f, JumpableGround);
     }
 }
