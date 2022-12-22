@@ -37,7 +37,8 @@ public class ChooseHeroScreen : MonoBehaviour
         
         for (; heroIndex < _heroCards.Count; heroIndex++)
             _heroCards[heroIndex].gameObject.SetActive(false);
-        
+
+        _nextButton.interactable = false;
         gameObject.SetActive(true);
     }
 
@@ -48,6 +49,7 @@ public class ChooseHeroScreen : MonoBehaviour
 
         _selectedHeroCard = heroCard;
         _selectedHeroCard.Select(true);
+        _nextButton.interactable = true;
     }
 
     private void OnClickNext()
