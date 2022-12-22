@@ -602,6 +602,8 @@ MonoBehaviour:
   _levelName: Level 1
   heroes:
   - {fileID: 11400000, guid: 37b61c62cd1819643b3702dab95d9b4a, type: 2}
+  - {fileID: 11400000, guid: 3a6ca76290676714683cfea706a2c8f1, type: 2}
+  - {fileID: 11400000, guid: 167465bf7fbe7d24e9d98d8b6ce2e6b5, type: 2}
 --- !u!114 &713462172
 MonoBehaviour:
   m_ObjectHideFlags: 0
