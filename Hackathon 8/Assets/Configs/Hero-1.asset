@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hero: {fileID: 1917508358852866115, guid: b68841623eff9b44a824a779800f6a0f, type: 3}
   sprite: {fileID: 4883129791460916795, guid: 40de9a8703e2e5a47882b0b86451c741, type: 3}
-  moveSpeed: 7
-  jumpForce: 14
+  moveSpeed: 3.5
+  jumpForce: 6.2
