@@ -6,6 +6,7 @@ public class HeroMediator : MonoBehaviour
     [SerializeField] private SpriteRenderer _body;
     [SerializeField] private BoxCollider2D _collider;
     [SerializeField] private Animator _anim;
+    public Transform lowestPoint;
     
     public Action OnDieAnimation;
     public SpriteRenderer Body => _body;

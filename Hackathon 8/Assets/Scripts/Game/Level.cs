@@ -8,7 +8,8 @@ public class Level : MonoBehaviour
     [SerializeField] private LevelObjectsCreateScreen _objectsCreateScreen;
     [SerializeField] private Transform _trapsContainer;
     [SerializeField] private CameraController _cameraController;
-
+    [SerializeField] private Transform _defaultHeroParent;
+    
     private StartGameData _startGameData;
     private List<LevelObjectBehaviour> createdObjects = new List<LevelObjectBehaviour>();
 
@@ -59,5 +60,10 @@ public class Level : MonoBehaviour
         
         MovePlayerToSpawnPoint();
         _player.Setup(_startGameData.hero, MovePlayerToSpawnPoint);
+    }
+
+    public void AddToDefaultHeroParent(Transform hero)
+    {
+        hero.SetParent(_defaultHeroParent);
     }
 }

@@ -4,17 +4,22 @@ public class PlayerMovement : MonoBehaviour
 {
     private enum MovementState { idle, running, jumping, falling }
     
-    private static readonly LayerMask JumpableGround = 1 << 6;
+    private static readonly LayerMask JumpableGround = (1 << 6) | (1 << 8);
+    private static readonly LayerMask MovingPlatformLayerMask = (1 << 8);
     private static readonly int State = Animator.StringToHash("state");
     
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private float _moveSpeed = 7f;
     [SerializeField] private float _jumpForce = 14f;
+    private Level _level;
 
     private HeroMediator _heroMediator;
     private HeroData _data;
     private float _dirX = 0f;
+    private MovingObject _movingPlatform;
 
+    public Vector3 GetLowestPoint() => _heroMediator.lowestPoint.position;
+    
     private void Awake()
     {
         Freeze();
@@ -85,6 +90,29 @@ public class PlayerMovement : MonoBehaviour
 
         if (_heroMediator != null)
             _heroMediator.Anim.SetInteger(State, (int)state);
+    }
+
+    public void AddToMovingObject(MovingObject movingObject)
+    {
+        if (_movingPlatform != null)
+            return;
+
+        _movingPlatform = movingObject;
+        transform.SetParent(movingObject.movingTransform);
+    }
+
+    public void RemoveFromMovingObject(MovingObject movingObject)
+    {
+        if (_movingPlatform == movingObject)
+        {
+            if (_level == null)
+                _level = FindObjectOfType<Level>();
+
+            if (_level != null)
+                _level.AddToDefaultHeroParent(transform);
+
+            _movingPlatform = null;
+        }
     }
 
     private bool IsGrounded()
