@@ -10,6 +10,10 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject _root;
     [SerializeField] private PlayerMovement _movement;
 
+    [SerializeField] private HeroData _defaultHero;
+
+    public bool IsCreated => _heroMediator != null;
+    
     private HeroData _heroData;
     private HeroMediator _heroMediator;
     private Action _onDie;
@@ -23,6 +27,12 @@ public class Player : MonoBehaviour
         _heroMediator.OnDieAnimation += OnDieAnimation;
     }
 
+    public void SetDefault()
+    {
+        var level = FindObjectOfType<Level>();
+        Setup(_defaultHero, level.MovePlayerToSpawnPoint);
+    }
+    
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if ((1 << collision.gameObject.layer & TrapLayer) != 0)

@@ -10,7 +10,7 @@ public class Level : MonoBehaviour
         _player.Setup(startGameData.hero, MovePlayerToSpawnPoint);
     }
 
-    private void MovePlayerToSpawnPoint()
+    public void MovePlayerToSpawnPoint()
     {
         _player.transform.position = _spawnPoint.position;
     }

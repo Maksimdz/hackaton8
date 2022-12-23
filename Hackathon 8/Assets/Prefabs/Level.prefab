@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _root: {fileID: 2180459153791161236}
   _movement: {fileID: 2180459153791161233}
+  _defaultHero: {fileID: 11400000, guid: 37b61c62cd1819643b3702dab95d9b4a, type: 2}
 --- !u!114 &2180459153791161233
 MonoBehaviour:
   m_ObjectHideFlags: 0

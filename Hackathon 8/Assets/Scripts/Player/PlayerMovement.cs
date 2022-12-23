@@ -76,7 +76,8 @@ public class PlayerMovement : MonoBehaviour
             state = MovementState.falling;
         }
 
-        _heroMediator.Anim.SetInteger(State, (int)state);
+        if (_heroMediator != null)
+            _heroMediator.Anim.SetInteger(State, (int)state);
     }
 
     private bool IsGrounded()
