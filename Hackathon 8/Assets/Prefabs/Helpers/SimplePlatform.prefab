@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4041754495263292867}
   - component: {fileID: 5762558431566328439}
   - component: {fileID: 7286315375561919802}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: SimplePlatform
   m_TagString: Trap
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 0.48643494, y: 0.08495736}
   m_EdgeRadius: 0
 --- !u!114 &7286315375561919802
 MonoBehaviour:
