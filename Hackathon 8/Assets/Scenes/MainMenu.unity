@@ -1162,6 +1162,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 782e51c3552090748ba065cede6fd756, type: 2}
   - {fileID: 11400000, guid: f09f61c0fac3a804eba2e5d794c88c85, type: 2}
   - {fileID: 11400000, guid: 0d19a03ed0beb284d9f2e34bd64c0b04, type: 2}
+  _showTraps: 1
+  _chooseNothing: 0
+  _traps: 5
+  _helpers: 3
 --- !u!114 &713462172
 MonoBehaviour:
   m_ObjectHideFlags: 0

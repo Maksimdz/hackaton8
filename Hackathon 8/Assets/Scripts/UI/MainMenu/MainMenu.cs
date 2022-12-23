@@ -10,6 +10,11 @@ public class MainMenu : MonoBehaviour
     
     [Header("Params")]
     [SerializeField] private HeroData[] heroes;
+
+    [SerializeField] private bool _showTraps;
+    [SerializeField] private bool _chooseNothing = true;
+    [SerializeField] private int _traps = 5;
+    [SerializeField] private int _helpers = 3;
     
     private StartGameData _startGameData = new StartGameData();
 
@@ -28,7 +33,11 @@ public class MainMenu : MonoBehaviour
     {
         _startGameData ??= new StartGameData();
         _startGameData.hero = heroData;
-        
+
+        _startGameData.showTraps = _showTraps;
+        _startGameData.helpers = _helpers;
+        _startGameData.traps = _traps;
+        _startGameData.chooseNothing = _chooseNothing;
         LoadGame();
     }
 

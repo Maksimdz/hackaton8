@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class LevelObjectCreator : MonoBehaviour
 {
@@ -24,7 +23,7 @@ public class LevelObjectCreator : MonoBehaviour
         
         var mousePosition = Input.mousePosition;
         var worldPosition = mainCamera.ScreenToWorldPoint(mousePosition);
-        current.transform.position = worldPosition;
+        current.transform.position = new Vector3(worldPosition.x, worldPosition.y, 0);
     }
 
     public void OnPointerUp()
