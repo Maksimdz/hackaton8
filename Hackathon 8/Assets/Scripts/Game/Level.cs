@@ -7,6 +7,7 @@ public class Level : MonoBehaviour
     [SerializeField] private Transform _spawnPoint;
     [SerializeField] private LevelObjectsCreateScreen _objectsCreateScreen;
     [SerializeField] private Transform _trapsContainer;
+    [SerializeField] private CameraController _cameraController;
 
     private StartGameData _startGameData;
     private List<LevelObjectBehaviour> createdObjects = new List<LevelObjectBehaviour>();
@@ -22,6 +23,7 @@ public class Level : MonoBehaviour
     public void OnLoadLevel(StartGameData startGameData)
     {
         _startGameData = startGameData;
+        _cameraController.SetPosition(_player.transform.position);
 
         if (startGameData.chooseNothing)
             OnFinishedLevelSetup();

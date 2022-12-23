@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
@@ -8,9 +5,11 @@ public class CameraController : MonoBehaviour
     [SerializeField] private Player player;
 
     private Transform _playerTransform;
+    private Transform _transform;
 
     private void Awake()
     {
+        _transform = transform;
         _playerTransform = player.transform;
     }
 
@@ -18,8 +17,12 @@ public class CameraController : MonoBehaviour
     {
         if (!player.IsCreated)
             return;
-        
-        transform.position = new Vector3(_playerTransform.position.x,
-            _playerTransform.position.y, transform.position.z);
+
+        SetPosition(_playerTransform.position);
+    }
+
+    public void SetPosition(Vector3 position)
+    {
+        _transform.position = new Vector3(position.x, position.y, _transform.position.z);
     }
 }
