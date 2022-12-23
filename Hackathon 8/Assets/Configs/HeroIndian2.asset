@@ -16,3 +16,4 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: ca47337d206cc554cbce72ecc4f7f7cb, type: 3}
   moveSpeed: 7
   jumpForce: 14
+  isFlipped: 1

@@ -7,4 +7,5 @@ public class HeroData : ScriptableObject
     public Sprite sprite;
     public float moveSpeed = 7f;
     public float jumpForce = 14f;
+    public bool isFlipped = false;
 }

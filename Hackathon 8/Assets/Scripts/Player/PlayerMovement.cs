@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -13,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _jumpForce = 14f;
 
     private HeroMediator _heroMediator;
+    private HeroData _data;
     private float _dirX = 0f;
 
     private void Awake()
@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Setup(HeroMediator heroMediator, HeroData heroData)
     {
+        _data = heroData;
         _heroMediator = heroMediator;
         _moveSpeed = heroData.moveSpeed;
         _jumpForce = heroData.jumpForce;
@@ -61,12 +62,12 @@ public class PlayerMovement : MonoBehaviour
         if (_dirX > 0f)
         {
             state = MovementState.running;
-            _heroMediator.Body.flipX = false;
+            _heroMediator.Body.flipX = _data.isFlipped;
         }
         else if (_dirX < 0f)
         {
             state = MovementState.running;
-            _heroMediator.Body.flipX = true;
+            _heroMediator.Body.flipX = !_data.isFlipped;
         }
         else
         {
