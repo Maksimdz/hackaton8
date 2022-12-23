@@ -17,9 +17,7 @@ public class CameraController : MonoBehaviour
     private void Update()
     {
         if (!player.IsCreated)
-        {
-            player.SetDefault();
-        }
+            return;
         
         transform.position = new Vector3(_playerTransform.position.x,
             _playerTransform.position.y, transform.position.z);

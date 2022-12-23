@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -13,6 +14,11 @@ public class PlayerMovement : MonoBehaviour
 
     private HeroMediator _heroMediator;
     private float _dirX = 0f;
+
+    private void Awake()
+    {
+        Freeze();
+    }
 
     public void Setup(HeroMediator heroMediator, HeroData heroData)
     {

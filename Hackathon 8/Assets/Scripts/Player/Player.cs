@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
         _onDie = onDie;
         _heroMediator = Instantiate(heroData.hero, transform);
         _movement.Setup(_heroMediator, heroData);
+        _movement.Reset();
         _heroMediator.OnDieAnimation += OnDieAnimation;
     }
 
