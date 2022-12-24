@@ -1,21 +1,32 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Level : MonoBehaviour
 {
     [SerializeField] private Player _player;
     [SerializeField] private Transform _spawnPoint;
-    [SerializeField] private LevelObjectsCreateScreen _objectsCreateScreen;
     [SerializeField] private Transform _trapsContainer;
     [SerializeField] private CameraController _cameraController;
     [SerializeField] private Transform _defaultHeroParent;
 
+    [Header("UI")]
+    [SerializeField] private LevelObjectsCreateScreen _objectsCreateScreen;
+    [SerializeField] private GameResultScreen _gameResultScreen;
+    [SerializeField] private Text _gameTimer;
+
     public (int, int) LevelObjectsCount => (createdObjects.Count,
         _startGameData.showTraps ? _startGameData.traps : _startGameData.helpers);
 
+    public bool LevelCompleted => completed;
+
     private StartGameData _startGameData;
     private List<LevelObjectBehaviour> createdObjects = new List<LevelObjectBehaviour>();
-
+    private int _gameTimeLeft;
+    private Coroutine _gameTimeCoroutine;
+    private bool completed;
+    
     private void Start()
     {
         if (_startGameData != null)
@@ -67,10 +78,41 @@ public class Level : MonoBehaviour
         
         MovePlayerToSpawnPoint();
         _player.Setup(_startGameData.hero, MovePlayerToSpawnPoint);
+
+        _gameTimeCoroutine = StartCoroutine(GameTimer());
     }
 
     public void AddToDefaultHeroParent(Transform hero)
     {
         hero.SetParent(_defaultHeroParent);
+    }
+    
+    private IEnumerator GameTimer()
+    {
+        _gameTimeLeft = _startGameData.gameTimer;
+        var waitForSec = new WaitForSeconds(1);
+
+        while (_gameTimeLeft > 0)
+        {
+            _gameTimer.text = $"Осталось времени: {_gameTimeLeft}";
+            yield return waitForSec;
+            _gameTimeLeft--;
+        }
+
+        _gameTimer.text = "Время вышло!";
+        yield return waitForSec;
+        
+        OnLevelCompleted(true);
+    }
+
+    public void OnLevelCompleted(bool timeIsUp)
+    {
+        if (completed)
+            return;
+        
+        StopAllCoroutines();
+        completed = true;
+
+        _gameResultScreen.ShowResults(!timeIsUp);
     }
 }
