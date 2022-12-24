@@ -10,6 +10,8 @@ public class TrapWithTimer : LevelObjectBehaviour
     {
         base.Activate();
 
+        if (animator == null)
+            animator = GetComponent<Animator>();
         animator.enabled = true;
     }
 
