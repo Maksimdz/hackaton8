@@ -12,7 +12,7 @@ public class Level : MonoBehaviour
 
     public (int, int) LevelObjectsCount => (createdObjects.Count,
         _startGameData.showTraps ? _startGameData.traps : _startGameData.helpers);
-    
+
     private StartGameData _startGameData;
     private List<LevelObjectBehaviour> createdObjects = new List<LevelObjectBehaviour>();
 
@@ -32,7 +32,11 @@ public class Level : MonoBehaviour
         if (startGameData.chooseNothing)
             OnFinishedLevelSetup();
         else
-            _objectsCreateScreen.Show(startGameData.showTraps, 0, startGameData.showTraps ? _startGameData.traps : _startGameData.helpers);
+            _objectsCreateScreen.Show(this,
+                startGameData.showTraps,
+                0,
+                startGameData.showTraps ? _startGameData.traps : _startGameData.helpers,
+                _startGameData.placeObjectsTimer);
     }
 
     public void MovePlayerToSpawnPoint()

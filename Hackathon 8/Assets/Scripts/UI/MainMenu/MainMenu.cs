@@ -15,6 +15,8 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private bool _chooseNothing = true;
     [SerializeField] private int _traps = 5;
     [SerializeField] private int _helpers = 3;
+    [SerializeField] private int _placeObjectsTimer = 10;
+    [SerializeField] private int _gameTimer = 60;
     
     private StartGameData _startGameData = new StartGameData();
 
@@ -38,6 +40,8 @@ public class MainMenu : MonoBehaviour
         _startGameData.helpers = _helpers;
         _startGameData.traps = _traps;
         _startGameData.chooseNothing = _chooseNothing;
+        _startGameData.placeObjectsTimer = _placeObjectsTimer;
+        _startGameData.gameTimer = _gameTimer;
         LoadGame();
     }
 
