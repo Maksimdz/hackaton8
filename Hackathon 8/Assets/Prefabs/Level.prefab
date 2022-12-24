@@ -233,7 +233,7 @@ MonoBehaviour:
   _objectsCreateScreen: {fileID: 257191914761653624}
   _trapsContainer: {fileID: 0}
   _cameraController: {fileID: 7635473566213183749}
-  _defaultHeroParent: {fileID: 0}
+  _defaultHeroParent: {fileID: 8965622784028067066}
 --- !u!1 &8965622785876232898
 GameObject:
   m_ObjectHideFlags: 0
