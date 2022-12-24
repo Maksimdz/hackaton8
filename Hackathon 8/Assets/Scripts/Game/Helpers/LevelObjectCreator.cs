@@ -6,6 +6,8 @@ public class LevelObjectCreator : MonoBehaviour
     public Transform levelObjectsContainer;
     public Camera mainCamera;
     public Level level;
+
+    public LevelObjectsCreateScreen objectsCreateScreen;
     
     public void SetObjectToCreate(LevelObjectBehaviour obj)
     {
@@ -35,5 +37,8 @@ public class LevelObjectCreator : MonoBehaviour
         var tmp = current;
         current = null;
         level.OnObjectCreated(tmp);
+
+        var levelObjectsCount = level.LevelObjectsCount;
+        objectsCreateScreen.UpdatePlacedObjectsCount(levelObjectsCount.Item1, levelObjectsCount.Item2);
     }
 }

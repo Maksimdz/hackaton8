@@ -1164,7 +1164,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0d19a03ed0beb284d9f2e34bd64c0b04, type: 2}
   _showTraps: 0
   _chooseNothing: 0
-  _traps: 5
+  _traps: 3
   _helpers: 3
 --- !u!114 &713462172
 MonoBehaviour:
