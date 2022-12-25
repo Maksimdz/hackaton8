@@ -6,9 +6,9 @@ public class Finish : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Player" && !level.LevelCompleted)
+        if (collision.transform.parent.gameObject.name == "Player" && !level.LevelCompleted)
         {
-            level.OnLevelCompleted(true);
+            level.OnLevelCompleted(false);
         }
     }
 }

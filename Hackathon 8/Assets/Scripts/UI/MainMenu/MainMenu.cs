@@ -9,6 +9,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private string _levelName = "Level 1";
     [SerializeField] private Menu menu;
     [SerializeField] private ChoseCampaign choseCampaign;
+    [SerializeField] private Loading loadingScreen;
     
     [Header("Params")]
     [SerializeField] private HeroData[] heroes;
@@ -21,10 +22,17 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private int _gameTimer = 60;
     
     private StartGameData _startGameData = new StartGameData();
-
+    private static bool gameLoaded = false;
     private void Awake()
     {
         _loader.SetActive(false);
+        if (gameLoaded)
+        {
+            ShowMenu1();
+            loadingScreen.gameObject.SetActive(false);
+        }
+
+        gameLoaded = true;
     }
 
     public void ShowChooseHeroScreen()
@@ -46,20 +54,24 @@ public class MainMenu : MonoBehaviour
         LoadGame();
     }
 
-    private async void LoadGame()
+    private void LoadGame()
     {
         _startGameData.levelName = _levelName;
         
         _loader.SetActive(true);
+        ReLoadGame(_startGameData);
+    }
+    private static void ReLoadGame(StartGameData startGameData)
+    {
         var sceneCount = SceneManager.sceneCount;
-        var asyncOperation = SceneManager.LoadSceneAsync(_startGameData.levelName);
+        var asyncOperation = SceneManager.LoadSceneAsync(startGameData.levelName);
         asyncOperation.completed += (op) =>
         {
             var loadedScene = SceneManager.GetSceneAt(sceneCount - 1);
             var level = loadedScene.GetRootGameObjects().Select(go => go.GetComponent<Level>())
                 .FirstOrDefault(l => l != null);
             if (level != null)
-                level.OnLoadLevel(_startGameData);
+                level.OnLoadLevel(startGameData,()=>ReLoadGame(startGameData));
         };
     }
 

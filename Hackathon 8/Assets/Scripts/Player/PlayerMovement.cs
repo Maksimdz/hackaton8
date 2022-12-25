@@ -4,7 +4,9 @@ public class PlayerMovement : MonoBehaviour
 {
     private enum MovementState { idle, running, jumping, falling }
     
-    private static readonly LayerMask JumpableGround = (1 << 6) | (1 << 8);
+    private static readonly LayerMask JumpableGround = ((1 << 6) | (1 << 8));
+    //private static readonly LayerMask JumpableGround = (1 << 6) ;
+    private static readonly LayerMask End = (1 << 9) ;
     private static readonly LayerMask MovingPlatformLayerMask = (1 << 8);
     private static readonly int State = Animator.StringToHash("state");
     
@@ -31,6 +33,8 @@ public class PlayerMovement : MonoBehaviour
         _heroMediator = heroMediator;
         _moveSpeed = heroData.moveSpeed;
         _jumpForce = heroData.jumpForce;
+        LayerMask mask = LayerMask.GetMask("MovingPlatform");
+        Debug.Log(mask);
     }
 
     public void Reset()
@@ -122,4 +126,9 @@ public class PlayerMovement : MonoBehaviour
     {
         return Physics2D.BoxCast(_heroMediator.Collider.bounds.center, _heroMediator.Collider.bounds.size, 0f, Vector2.down, .1f, JumpableGround);
     }
+    
+    //private bool IsWin()
+    //{
+     //   return Physics2D.BoxCast(_heroMediator.Collider.bounds.center, _heroMediator.Collider.bounds.size, 0f, Vector2.down, .1f, JumpableGround);
+    //}
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,6 +29,7 @@ public class Level : MonoBehaviour
     private int _gameTimeLeft;
     private Coroutine _gameTimeCoroutine;
     private bool completed;
+    private Action reload;
     
     private void Start()
     {
@@ -37,8 +39,9 @@ public class Level : MonoBehaviour
         _player.SetDefault();
     }
     
-    public void OnLoadLevel(StartGameData startGameData)
+    public void OnLoadLevel(StartGameData startGameData,Action reload)
     {
+        this.reload = reload;
         _startGameData = startGameData;
         _cameraController.SetPosition(_player.transform.position);
 
@@ -115,6 +118,11 @@ public class Level : MonoBehaviour
         StopAllCoroutines();
         completed = true;
 
-        _gameResultScreen.ShowResults(!timeIsUp);
+        _gameResultScreen.ShowResults(!timeIsUp,_startGameData.gameTimer-_gameTimeLeft);
+    }
+
+    public void ReloadLevel()
+    {
+        reload?.Invoke();
     }
 }
