@@ -26,6 +26,8 @@ public class LevelObjectCreator : MonoBehaviour
         var mousePosition = Input.mousePosition;
         var worldPosition = mainCamera.ScreenToWorldPoint(mousePosition);
         current.transform.position = new Vector3(worldPosition.x, worldPosition.y, 0);
+        
+        MoveCamera();
     }
 
     public void OnPointerUp()
@@ -40,5 +42,54 @@ public class LevelObjectCreator : MonoBehaviour
 
         var levelObjectsCount = level.LevelObjectsCount;
         objectsCreateScreen.UpdatePlacedObjectsCount(levelObjectsCount.Item1, levelObjectsCount.Item2);
+    }
+
+    private void MoveCamera()
+    {
+        var bg = GameObject.Find("bg").GetComponent<SpriteRenderer>();
+        float delta = .2f;
+        float coef1 = .01f;
+        var maxScreen = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width,Screen.height));
+        var minScreen = mainCamera.ScreenToWorldPoint(new Vector3(0,0));
+        var sizeScreen = maxScreen - minScreen;
+        Vector3 newPos= Vector3.zero;
+        Vector3 camPos = Camera.main.transform.position;
+        if (current.transform.position.x > (maxScreen.x - delta))
+        {
+            newPos.x  = Mathf.Min(camPos.x + ((current.transform.position.x - (maxScreen.x - delta))),
+                bg.bounds.max.x-sizeScreen.x/2);
+            if (newPos.x > camPos.x)
+            {
+                camPos.x += coef1;
+            }
+        }
+        if (current.transform.position.y > (maxScreen.y - delta))
+        {
+            newPos.y = Mathf.Min(camPos.y + ((current.transform.position.y - (maxScreen.y - delta))),
+                bg.bounds.max.y-sizeScreen.y/2);
+            if (newPos.y > camPos.y)
+            {
+                camPos.y += coef1;
+            }
+        }
+        if (current.transform.position.x < minScreen.x + delta)
+        {
+            newPos.x = Mathf.Max(camPos.x -((minScreen.x + delta) - current.transform.position.x),
+                bg.bounds.min.x+sizeScreen.x/2);
+            if (newPos.x < camPos.x)
+            {
+                camPos.x -= coef1;
+            }
+        }
+        if (current.transform.position.y < minScreen.y + delta)
+        {
+            newPos.y = Mathf.Max(camPos.y -((minScreen.y + delta) - current.transform.position.y),
+                bg.bounds.min.y+sizeScreen.y/2);
+            if (newPos.y < camPos.y)
+            {
+                camPos.y -= coef1;
+            }
+        }
+        Camera.main.transform.position = camPos;
     }
 }
