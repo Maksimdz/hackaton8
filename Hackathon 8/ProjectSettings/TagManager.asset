@@ -15,8 +15,8 @@ TagManager:
   - UI
   - Ground
   - Trap
-  - Player
-  - MovingPlatform
+  - 
+  - 
   - 
   - 
   - 
@@ -48,4 +48,10 @@ TagManager:
     locked: 0
   - name: Terrain
     uniqueID: 1120101215
+    locked: 0
+  - name: Traps
+    uniqueID: 2429742051
+    locked: 0
+  - name: Player
+    uniqueID: 2073546111
     locked: 0
