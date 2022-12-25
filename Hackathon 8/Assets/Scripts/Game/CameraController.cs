@@ -7,6 +7,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] private Camera mainCamera;
     private Transform _playerTransform;
     private Transform _transform;
+    
 
     private void Awake()
     {
@@ -16,9 +17,12 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
+
         if (!player.IsCreated)
+        {
             UpdateCamera();
             return;
+        }
 
         SetPosition(_playerTransform.position);
         UpdateCamera();
