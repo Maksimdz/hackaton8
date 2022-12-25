@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ChooseHeroScreen : MonoBehaviour
 {
+    [SerializeField] private MainMenu mainMenu;
     [SerializeField] private Transform _container;
     [SerializeField] private HeroCard _heroCard;
     [SerializeField] private Button _nextButton;
@@ -56,14 +57,20 @@ public class ChooseHeroScreen : MonoBehaviour
         _selectedHeroCard.Select(true);
         _nextButton.interactable = true;
         
-        // none.gameObject.SetActive(false);
-        // first.gameObject.SetActive(heroCard.id==1);
-        // second.gameObject.SetActive(heroCard.id==2);
-        // third.gameObject.SetActive(heroCard.id==3);
+        none.gameObject.SetActive(false);
+        first.gameObject.SetActive(heroCard.id==1);
+        second.gameObject.SetActive(heroCard.id==2);
+        third.gameObject.SetActive(heroCard.id==3);
     }
 
     private void OnClickNext()
     {
         _onChosenHero?.Invoke(_selectedHeroCard != null ? _selectedHeroCard.Hero : null);
+    }
+
+    public void OnClickBack()
+    {
+        gameObject.SetActive(false);
+        mainMenu.ShowMenu1();
     }
 }

@@ -23,12 +23,12 @@ public class HeroCard : MonoBehaviour
     {
         _heroData = hero;
         _heroImage.sprite = hero.sprite;
-        _selectedFrame.SetActive(false);
+        // _selectedFrame.SetActive(false);
     }
 
     public void Select(bool select)
     {
-        _selectedFrame.SetActive(select);
+        // _selectedFrame.SetActive(select);
     }
 
     private void OnClick()
