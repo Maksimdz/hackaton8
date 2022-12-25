@@ -7,6 +7,8 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private ChooseHeroScreen _chooseHeroScreen;
     [SerializeField] private GameObject _loader;
     [SerializeField] private string _levelName = "Level 1";
+    [SerializeField] private Menu menu;
+    [SerializeField] private ChoseCampaign choseCampaign;
     
     [Header("Params")]
     [SerializeField] private HeroData[] heroes;
@@ -23,10 +25,9 @@ public class MainMenu : MonoBehaviour
     private void Awake()
     {
         _loader.SetActive(false);
-        ShowChooseHeroScreen();
     }
 
-    private void ShowChooseHeroScreen()
+    public void ShowChooseHeroScreen()
     {
         _chooseHeroScreen.Show(heroes, OnChosenHero);
     }
@@ -60,5 +61,14 @@ public class MainMenu : MonoBehaviour
             if (level != null)
                 level.OnLoadLevel(_startGameData);
         };
+    }
+
+    public void ShowMenu1()
+    {
+        menu.gameObject.SetActive(true);
+    }
+    public void ShowMenu2()
+    {
+        choseCampaign.gameObject.SetActive(true);
     }
 }
