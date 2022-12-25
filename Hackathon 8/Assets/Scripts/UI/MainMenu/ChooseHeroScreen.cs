@@ -8,6 +8,11 @@ public class ChooseHeroScreen : MonoBehaviour
     [SerializeField] private Transform _container;
     [SerializeField] private HeroCard _heroCard;
     [SerializeField] private Button _nextButton;
+    
+    [SerializeField] private Image none;
+    [SerializeField] private Image first;
+    [SerializeField] private Image second;
+    [SerializeField] private Image third;
 
     private List<HeroCard> _heroCards = new List<HeroCard>();
     private HeroCard _selectedHeroCard;
@@ -50,6 +55,11 @@ public class ChooseHeroScreen : MonoBehaviour
         _selectedHeroCard = heroCard;
         _selectedHeroCard.Select(true);
         _nextButton.interactable = true;
+        
+        // none.gameObject.SetActive(false);
+        // first.gameObject.SetActive(heroCard.id==1);
+        // second.gameObject.SetActive(heroCard.id==2);
+        // third.gameObject.SetActive(heroCard.id==3);
     }
 
     private void OnClickNext()

@@ -1044,6 +1044,10 @@ MonoBehaviour:
   _container: {fileID: 699311470}
   _heroCard: {fileID: 6726625387847707905, guid: 7c4513e82a7a633448a539358fd9288b, type: 3}
   _nextButton: {fileID: 959359493}
+  none: {fileID: 0}
+  first: {fileID: 0}
+  second: {fileID: 0}
+  third: {fileID: 0}
 --- !u!224 &364050039
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1504,6 +1508,7 @@ MonoBehaviour:
   _levelName: Level 2
   menu: {fileID: 1312492375}
   choseCampaign: {fileID: 1955266937}
+  loadingScreen: {fileID: 1307433494}
   heroes:
   - {fileID: 11400000, guid: 782e51c3552090748ba065cede6fd756, type: 2}
   - {fileID: 11400000, guid: f09f61c0fac3a804eba2e5d794c88c85, type: 2}

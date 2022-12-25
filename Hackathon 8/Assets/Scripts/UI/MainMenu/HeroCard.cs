@@ -6,6 +6,7 @@ public class HeroCard : MonoBehaviour
     [SerializeField] private Image _heroImage;
     [SerializeField] private Button _chooseHeroBtn;
     [SerializeField] private GameObject _selectedFrame;
+    [SerializeField] public int id;
 
     public HeroData Hero => _heroData;
     
