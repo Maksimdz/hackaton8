@@ -10,6 +10,8 @@ public class Level : MonoBehaviour
     [SerializeField] private Transform _trapsContainer;
     [SerializeField] private CameraController _cameraController;
     [SerializeField] private Transform _defaultHeroParent;
+    [SerializeField] public Transform minPos;
+    [SerializeField] public Transform maxPos;
 
     [Header("UI")]
     [SerializeField] private LevelObjectsCreateScreen _objectsCreateScreen;

@@ -46,7 +46,7 @@ public class LevelObjectCreator : MonoBehaviour
 
     private void MoveCamera()
     {
-        var bg = GameObject.Find("bg").GetComponent<SpriteRenderer>();
+        Rect bgRect = new Rect(level.minPos.position, level.maxPos.position - level.minPos.position);
         float delta = .2f;
         float coef1 = .01f;
         var maxScreen = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width,Screen.height));
@@ -57,7 +57,7 @@ public class LevelObjectCreator : MonoBehaviour
         if (current.transform.position.x > (maxScreen.x - delta))
         {
             newPos.x  = Mathf.Min(camPos.x + ((current.transform.position.x - (maxScreen.x - delta))),
-                bg.bounds.max.x-sizeScreen.x/2);
+                bgRect.max.x-sizeScreen.x/2);
             if (newPos.x > camPos.x)
             {
                 camPos.x += coef1;
@@ -66,7 +66,7 @@ public class LevelObjectCreator : MonoBehaviour
         if (current.transform.position.y > (maxScreen.y - delta))
         {
             newPos.y = Mathf.Min(camPos.y + ((current.transform.position.y - (maxScreen.y - delta))),
-                bg.bounds.max.y-sizeScreen.y/2);
+                bgRect.max.y-sizeScreen.y/2);
             if (newPos.y > camPos.y)
             {
                 camPos.y += coef1;
@@ -75,7 +75,7 @@ public class LevelObjectCreator : MonoBehaviour
         if (current.transform.position.x < minScreen.x + delta)
         {
             newPos.x = Mathf.Max(camPos.x -((minScreen.x + delta) - current.transform.position.x),
-                bg.bounds.min.x+sizeScreen.x/2);
+                bgRect.min.x+sizeScreen.x/2);
             if (newPos.x < camPos.x)
             {
                 camPos.x -= coef1;
@@ -84,7 +84,7 @@ public class LevelObjectCreator : MonoBehaviour
         if (current.transform.position.y < minScreen.y + delta)
         {
             newPos.y = Mathf.Max(camPos.y -((minScreen.y + delta) - current.transform.position.y),
-                bg.bounds.min.y+sizeScreen.y/2);
+                bgRect.min.y+sizeScreen.y/2);
             if (newPos.y < camPos.y)
             {
                 camPos.y -= coef1;
