@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private float _moveSpeed = 7f;
     [SerializeField] private float _jumpForce = 14f;
+    [SerializeField] private Controller controller;
     private Level _level;
 
     private HeroMediator _heroMediator;
@@ -57,11 +58,20 @@ public class PlayerMovement : MonoBehaviour
             return;
         
         _dirX = Input.GetAxisRaw("Horizontal");
+        if (Mathf.Abs(_dirX) == 0)
+        {
+            _dirX = controller.dirX;
+        }
         _rb.velocity = new Vector2(_dirX * _moveSpeed, _rb.velocity.y);
-
+        
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             _rb.velocity = new Vector2(_rb.velocity.x, _jumpForce);
+        }
+        else if(controller.jump)
+        {
+            _rb.velocity = new Vector2(_rb.velocity.x, _jumpForce);
+            controller.jump = false;
         }
 
         UpdateAnimationState();

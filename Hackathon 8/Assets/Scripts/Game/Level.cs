@@ -18,6 +18,7 @@ public class Level : MonoBehaviour
     [SerializeField] private LevelObjectsCreateScreen _objectsCreateScreen;
     [SerializeField] private GameResultScreen _gameResultScreen;
     [SerializeField] private Text _gameTimer;
+    [SerializeField] public GameObject controller;
 
     public (int, int) LevelObjectsCount => (createdObjects.Count,
         _startGameData.showTraps ? _startGameData.traps : _startGameData.helpers);
@@ -85,6 +86,8 @@ public class Level : MonoBehaviour
         _player.Setup(_startGameData.hero, MovePlayerToSpawnPoint);
 
         _gameTimeCoroutine = StartCoroutine(GameTimer());
+        
+        controller.SetActive(true);
     }
 
     public void AddToDefaultHeroParent(Transform hero)

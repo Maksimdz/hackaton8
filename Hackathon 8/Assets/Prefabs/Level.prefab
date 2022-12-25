@@ -162,6 +162,7 @@ MonoBehaviour:
   _rb: {fileID: 2180459153791161237}
   _moveSpeed: 7
   _jumpForce: 14
+  controller: {fileID: 4068300408732844501}
 --- !u!50 &2180459153791161237
 Rigidbody2D:
   serializedVersion: 4
@@ -239,8 +240,9 @@ MonoBehaviour:
   minPos: {fileID: 0}
   maxPos: {fileID: 0}
   _objectsCreateScreen: {fileID: 257191914761653624}
-  _gameResultScreen: {fileID: 0}
+  _gameResultScreen: {fileID: 1759644770132184960}
   _gameTimer: {fileID: 9085222565421653464}
+  controller: {fileID: 3369769954167044182}
 --- !u!1 &8965622785876232898
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,6 +350,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114003458, guid: 0e7ad16d99fff3346b2b20fb89be6ead, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 114003458, guid: 0e7ad16d99fff3346b2b20fb89be6ead, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 1885506604, guid: 0e7ad16d99fff3346b2b20fb89be6ead, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -416,6 +426,18 @@ PrefabInstance:
       propertyPath: _prefab
       value: 
       objectReference: {fileID: 7286315375561919802, guid: 369d6bb6675d5384585e302759d77f63, type: 3}
+    - target: {fileID: 3656589952707454628, guid: 0e7ad16d99fff3346b2b20fb89be6ead, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 3656589952707454628, guid: 0e7ad16d99fff3346b2b20fb89be6ead, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 3954064077947717262, guid: 0e7ad16d99fff3346b2b20fb89be6ead, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4495089835345466992, guid: 0e7ad16d99fff3346b2b20fb89be6ead, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -440,6 +462,14 @@ PrefabInstance:
       propertyPath: _prefab
       value: 
       objectReference: {fileID: 6727628041363755397, guid: b9bb64e9921f2cd4f83ab7fc1e932281, type: 3}
+    - target: {fileID: 6216512596162505883, guid: 0e7ad16d99fff3346b2b20fb89be6ead, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -800
+      objectReference: {fileID: 0}
+    - target: {fileID: 6216512596162505883, guid: 0e7ad16d99fff3346b2b20fb89be6ead, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -382
+      objectReference: {fileID: 0}
     - target: {fileID: 6303170613408102324, guid: 0e7ad16d99fff3346b2b20fb89be6ead, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -592,6 +622,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 5664317421379508311, guid: 7f454b9b117a8544a949e9e4025dc3d1, type: 3}
+    - target: {fileID: 7872243078802803208, guid: 0e7ad16d99fff3346b2b20fb89be6ead, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7902695998518386170, guid: 0e7ad16d99fff3346b2b20fb89be6ead, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -688,7 +722,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4364103850887119954, guid: 0e7ad16d99fff3346b2b20fb89be6ead, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0e7ad16d99fff3346b2b20fb89be6ead, type: 3}
 --- !u!224 &2918797756209836324 stripped
 RectTransform:
@@ -717,3 +752,84 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a51558186fe2204fbf5bd1128d44342, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1759644770132184960 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6599888004001758686, guid: 0e7ad16d99fff3346b2b20fb89be6ead, type: 3}
+  m_PrefabInstance: {fileID: 4898791269602996830}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9a8989e38ab7164ca1b373599e3f4f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &3369769954167044182 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7872243078802803208, guid: 0e7ad16d99fff3346b2b20fb89be6ead, type: 3}
+  m_PrefabInstance: {fileID: 4898791269602996830}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8440775807660225744 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3954064077947717262, guid: 0e7ad16d99fff3346b2b20fb89be6ead, type: 3}
+  m_PrefabInstance: {fileID: 4898791269602996830}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1565420821163892421 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6216512596162505883, guid: 0e7ad16d99fff3346b2b20fb89be6ead, type: 3}
+  m_PrefabInstance: {fileID: 4898791269602996830}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &4901540978097819532 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 574707274978835922, guid: 0e7ad16d99fff3346b2b20fb89be6ead, type: 3}
+  m_PrefabInstance: {fileID: 4898791269602996830}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &790512738081906589 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5261461733401406915, guid: 0e7ad16d99fff3346b2b20fb89be6ead, type: 3}
+  m_PrefabInstance: {fileID: 4898791269602996830}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4260966970818948333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 790512738081906589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4068300408732844501}
+          m_TargetAssemblyTypeName: Controller, Assembly-CSharp
+          m_MethodName: Jump
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &4068300408732844501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8440775807660225744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f32e8cb7e2d5fe47860aa6039b8a353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 7660539625536626372}
+  rectTransform: {fileID: 1565420821163892421}
+  point: {fileID: 4901540978097819532}
+  jumpButton: {fileID: 0}
