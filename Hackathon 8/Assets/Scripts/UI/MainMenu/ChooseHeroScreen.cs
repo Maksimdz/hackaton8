@@ -15,7 +15,7 @@ public class ChooseHeroScreen : MonoBehaviour
     [SerializeField] private Image second;
     [SerializeField] private Image third;
 
-    private List<HeroCard> _heroCards = new List<HeroCard>();
+    [SerializeField] private List<HeroCard> _heroCards = new List<HeroCard>();
     private HeroCard _selectedHeroCard;
     private Action<HeroData> _onChosenHero;
 
