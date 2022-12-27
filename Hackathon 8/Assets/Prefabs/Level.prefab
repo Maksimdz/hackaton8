@@ -560,19 +560,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5053691093390244649, guid: 0e7ad16d99fff3346b2b20fb89be6ead, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 290.29053
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 5053691093390244649, guid: 0e7ad16d99fff3346b2b20fb89be6ead, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 285.56116
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 5053691093390244649, guid: 0e7ad16d99fff3346b2b20fb89be6ead, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -215
+      value: -180
       objectReference: {fileID: 0}
     - target: {fileID: 5053691093390244649, guid: 0e7ad16d99fff3346b2b20fb89be6ead, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -198
+      value: -100
       objectReference: {fileID: 0}
     - target: {fileID: 6195688877627829248, guid: 0e7ad16d99fff3346b2b20fb89be6ead, type: 3}
       propertyPath: _prefab
@@ -894,6 +894,22 @@ PrefabInstance:
       propertyPath: m_FontData.m_Font
       value: 
       objectReference: {fileID: 12800000, guid: ee1182fa7e6b5004fa1e8eb813c14b18, type: 3}
+    - target: {fileID: 8432874326460842142, guid: 0e7ad16d99fff3346b2b20fb89be6ead, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 8432874326460842142, guid: 0e7ad16d99fff3346b2b20fb89be6ead, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 8432874326460842142, guid: 0e7ad16d99fff3346b2b20fb89be6ead, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 8432874326460842142, guid: 0e7ad16d99fff3346b2b20fb89be6ead, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -100
+      objectReference: {fileID: 0}
     - target: {fileID: 8561047465275864112, guid: 0e7ad16d99fff3346b2b20fb89be6ead, type: 3}
       propertyPath: m_Sprite
       value: 
