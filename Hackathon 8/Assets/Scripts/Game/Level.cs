@@ -38,6 +38,7 @@ public class Level : MonoBehaviour
             return;
         
         _player.SetDefault();
+       
     }
     
     public void OnLoadLevel(StartGameData startGameData,Action reload)

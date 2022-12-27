@@ -61,7 +61,7 @@ public class MainMenu : MonoBehaviour
         _loader.SetActive(true);
         ReLoadGame(_startGameData);
     }
-    private static void ReLoadGame(StartGameData startGameData)
+    public static void ReLoadGame(StartGameData startGameData)
     {
         var sceneCount = SceneManager.sceneCount;
         var asyncOperation = SceneManager.LoadSceneAsync(startGameData.levelName);

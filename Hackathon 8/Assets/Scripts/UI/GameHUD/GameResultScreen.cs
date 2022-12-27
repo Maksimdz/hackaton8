@@ -12,11 +12,6 @@ public class GameResultScreen : MonoBehaviour
     public Button next;
     public Button again;
     
-    private void Awake()
-    {
-        gameObject.SetActive(false);
-    }
-
     public void ShowResults(bool isWon, int time)
     {
         resultHeader.text = isWon ? "Победа" : "Поражение";
